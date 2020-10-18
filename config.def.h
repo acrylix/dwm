@@ -64,7 +64,7 @@ static const char *roficmd[] = { "rofi", "-show", "run" };
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
 static const char scratchpadname[] = "scratchpad";
-static const char *scratchpadcmd[] = { "alacritty", "-t", scratchpadname, NULL };
+static const char *scratchpadcmd[] = { "alacritty", "-t", scratchpadname, "-d", "100", "30", NULL };
  
 static Key keys[] = {
 	/* modifier                     key        function        argument */
