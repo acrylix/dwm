@@ -70,7 +70,7 @@ static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "alacritty", "-t", scratchpadname, "-d", "100", "30", NULL };
 static const char *firefox[] = { "firefox", NULL };
 static const char *chrome[] = { "google-chrome-stable", NULL };
-static const char *printScreen[] = { "flameshot", "gui" };
+static const char *printScreen[] = { "flameshot", "gui", NULL };
  
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -80,7 +80,7 @@ static Key keys[] = {
 	{ CTRLKEY|ShiftMask,			XK_Return, spawn,		   {.v = firefox } },
 	{ MODKEY|ShiftMask,				XK_Return, spawn,		   {.v = chrome } },
 	{ MODKEY,                       XK_u,  togglescratch,  	   {.v = scratchpadcmd } },
-	{ NULL,							XK_Print,  spawn,		   {.v = printScreen } },
+	{ 0,							XK_Print,  spawn,		   {.v = printScreen } },
 	{ CTRLKEY,						XK_q,      killclient,     {0} },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
