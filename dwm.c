@@ -273,6 +273,7 @@ static int xerrorstart(Display *dpy, XErrorEvent *ee);
 static void zoom(const Arg *arg);
 static void centeredmaster(Monitor *m);
 static void centeredfloatingmaster(Monitor *m);
+static void view_adjacent(const Arg *arg);
 
 /* variables */
 static Systray *systray =  NULL;
@@ -2718,4 +2719,26 @@ centeredfloatingmaster(Monitor *m)
 		if(tx + WIDTH(c) + m->gappx < m->mw)
 			tx += WIDTH(c) + m->gappx;
 	}
+}
+
+void
+view_adjacent(const Arg *arg)
+{
+	int i, curtags;
+	int seltag = 0;
+	Arg a;
+
+	curtags = selmon->tagset[selmon->seltags];
+	for(i = 0; i < LENGTH(tags); i++)
+		if(curtags & (1 << i)){
+			seltag = i;
+			break;
+		}
+
+	seltag = (seltag + arg->i) % (int)LENGTH(tags);
+	if(seltag < 0)
+		seltag += LENGTH(tags);
+
+	a.i = (1 << seltag);
+	view(&a);
 }

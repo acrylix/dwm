@@ -33,7 +33,6 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
 };
 
 /* layout(s) */
@@ -69,12 +68,16 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "alacritty", NULL };
 static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "alacritty", "-t", scratchpadname, "-d", "100", "30", NULL };
+static const char *firefox[] = { "firefox", NULL };
+static const char *chrome[] = { "chrome", NULL };
  
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_space,  spawn,      	   {.v = roficmd} },
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ CTRLKEY,						XK_Return, spawn,          {.v = termcmd } },
+	{ CTRLKEY|ShiftMask,			XK_Return, spawn,		   {.v = firefox } },
+	{ MODKEY|ShiftMask,				XK_Return, spawn,		   {.v = chrome } },
 	{ MODKEY,                       XK_u,  togglescratch,  {.v = scratchpadcmd } },
 	{ CTRLKEY,						XK_q,      killclient,     {0} },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
@@ -103,6 +106,9 @@ static Key keys[] = {
 	{ MODKEY,                       XK_minus,  setgaps,        {.i = -5 } },
 	{ MODKEY,                       XK_equal,  setgaps,        {.i = +5 } },
 	{ MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i = 0  } },
+
+	{ MODKEY,              			XK_bracketleft,           	view_adjacent,  { .i = +1 } },
+	{ MODKEY,              			XK_bracketright,           	view_adjacent,  { .i = -1 } },
 
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
