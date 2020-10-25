@@ -47,7 +47,7 @@ static const Layout layouts[] = {
 	{ "[M]",      monocle },
 	{ "|M|",      centeredmaster },
 	{ ">M>",      centeredfloatingmaster },
-	{ "DD",       doubledeck },
+	{ "[D]",      deck },
 };
 
 /* key definitions */
