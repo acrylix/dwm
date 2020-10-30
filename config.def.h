@@ -31,9 +31,10 @@ static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
-	 */
-	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
+	 */	
+	/* class      			instance    title       tags mask     	isfloating   	monitor */
+	{ "Gimp",     			NULL,       NULL,       0,           	1,           	-1	},
+	{ "Org.gnome.Nautilus", NULL, 		NULL, 		0, 				1, 				-1	}
 };
 
 /* layout(s) */
@@ -77,27 +78,30 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *roficmd[] = { "rofi", "-show", "run" };
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
+static const char *termcmdLocal[] = { "alacritty", "--working-directory $(xcwd)", NULL};
 static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "alacritty", "-t", scratchpadname, "-d", "100", "30", NULL };
 static const char *firefox[] = { "firefox", NULL };
 static const char *chrome[] = { "google-chrome-stable", NULL };
 static const char *printScreen[] = { "flameshot", "gui", NULL };
+static const char *fileExplorer[] = { "nautilus", NULL };
  
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_space,  spawn,      	   {.v = roficmd} },
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ CTRLKEY,						XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY,						XK_backslash, spawn,       {.v = termcmdLocal } },	
 	{ CTRLKEY|ShiftMask,			XK_Return, spawn,		   {.v = firefox } },
 	{ MODKEY|ShiftMask,				XK_Return, spawn,		   {.v = chrome } },
 	{ MODKEY,                       XK_u,  togglescratch,  	   {.v = scratchpadcmd } },
 	{ 0,							XK_Print,  spawn,		   {.v = printScreen } },
+	{ MODKEY,						XK_e,	   spawn,		   {.v = fileExplorer } },
 	{ CTRLKEY,						XK_q,      killclient,     {0} },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
-	// { MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
-	// { MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
 	STACKKEYS(MODKEY,                          focus)
 	STACKKEYS(MODKEY|ShiftMask,                push)
+	{ SUPERKEY,                     XK_u,      focusurgent,    {0} },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
 	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },

@@ -260,6 +260,7 @@ static void toggletag(const Arg *arg);
 static void toggleview(const Arg *arg);
 static void unfocus(Client *c, int setfocus);
 static void unmanage(Client *c, int destroyed);
+static void focusurgent(const Arg *arg);
 static void unmapnotify(XEvent *e);
 static void updatebarpos(Monitor *m);
 static void updatebars(void);
@@ -2899,4 +2900,19 @@ view_adjacent(const Arg *arg)
 
 	a.i = (1 << seltag);
 	view(&a);
+}
+
+static void
+focusurgent(const Arg *arg) {
+	Client *c;
+	int i;
+	for(c=selmon->clients; c && !c->isurgent; c=c->next);
+	if(c) {
+		for(i=0; i < LENGTH(tags) && !((1 << i) & c->tags); i++);
+		if(i < LENGTH(tags)) {
+			const Arg a = {.ui = 1 << i};
+			view(&a);
+			focus(c);
+		}
+	}
 }
