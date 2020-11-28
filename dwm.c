@@ -1561,14 +1561,23 @@ resizeclient(Client *c, int x, int y, int w, int h)
 	c->oldw = c->w; c->w = wc.width = w;
 	c->oldh = c->h; c->h = wc.height = h;
 	wc.border_width = c->bw;
+
+	XChangeProperty(dpy, c->win, netatom[NetWMState], XA_ATOM, 32,
+			PropModeReplace, (unsigned char*)0, 0);
 	
 	if (((nexttiled(c->mon->clients) == c && !nexttiled(c->next))
 	    || &monocle == c->mon->lt[c->mon->sellt]->arrange))
 	{
-		c->x = wc.x += c->bw * 2;
-		c->y = wc.y += c->bw * 2;
-		c->w = wc.width -= c->bw * 2;
-		c->h = wc.height -= c->bw * 2;
+		// c->x = wc.x += c->bw * 2;
+		// c->y = wc.y += c->bw * 2;
+		// c->w = wc.width -= c->bw * 2;
+		// c->h = wc.height -= c->bw * 2;
+
+		XChangeProperty(dpy, c->win, netatom[NetWMState], XA_ATOM, 32,
+			PropModeReplace, (unsigned char*)&netatom[NetWMFullscreen], 1);
+
+		c->w = wc.width += c->bw * 2;
+		c->h = wc.height += c->bw * 2;
 		wc.border_width = 0;
 	}
 	XConfigureWindow(dpy, c->win, CWX|CWY|CWWidth|CWHeight|CWBorderWidth, &wc);
