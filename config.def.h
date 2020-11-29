@@ -133,6 +133,16 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,				XK_bracketleft, 			focusmon,       {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_bracketright, 			focusmon,       {.i = +1 } },
 
+	{ MODKEY|CTRLKEY,               XK_q,      moveplace,      {.ui = WIN_NW }},
+	{ MODKEY|CTRLKEY,               XK_w,      moveplace,      {.ui = WIN_N  }},
+	{ MODKEY|CTRLKEY,               XK_e,      moveplace,      {.ui = WIN_NE }},
+	{ MODKEY|CTRLKEY,               XK_a,      moveplace,      {.ui = WIN_W  }},
+	{ MODKEY|CTRLKEY,               XK_s,      moveplace,      {.ui = WIN_C  }},
+	{ MODKEY|CTRLKEY,               XK_d,      moveplace,      {.ui = WIN_E  }},
+	{ MODKEY|CTRLKEY,               XK_z,      moveplace,      {.ui = WIN_SW }},
+	{ MODKEY|CTRLKEY,               XK_x,      moveplace,      {.ui = WIN_S  }},
+	{ MODKEY|CTRLKEY,               XK_c,      moveplace,      {.ui = WIN_SE }},
+
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
