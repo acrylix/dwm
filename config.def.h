@@ -10,7 +10,8 @@ static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display 
 static const int showsystray        = 1;     	/* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "Terminess Powerline:size=11:style=Bold:antialias=true" };
+static const int user_bh            = 40;        /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
+static const char *fonts[]          = { "Terminess Powerline:size=13:style=Bold:antialias=true" };
 static const char dmenufont[]       = "Terminess Powerline:size=11:style=Bold:antialias=true";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
