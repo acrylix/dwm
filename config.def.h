@@ -107,7 +107,7 @@ static const char *fileExplorer[] = { "nautilus", NULL };
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_space,  spawn,      	   {.v = roficmd} },
-	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+	// { MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ CTRLKEY,						XK_Return, spawn,          {.v = termcmd } },
 	{ CTRLKEY|ShiftMask,			XK_Return, spawn,		   {.v = firefox } },
 	{ MODKEY|ShiftMask,				XK_Return, spawn,		   {.v = chrome } },
