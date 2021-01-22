@@ -94,7 +94,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *roficmd[] = { "rofi", "-show", "run" };
+// static const char *roficmd[] = { "rofi", "-show", "run" };
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
 static const char scratchpadname[] = "scratchpad";
@@ -106,7 +106,7 @@ static const char *fileExplorer[] = { "nautilus", NULL };
  
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_space,  spawn,      	   {.v = roficmd} },
+	// { MODKEY,                       XK_space,  spawn,      	   {.v = roficmd} },
 	// { MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ CTRLKEY,						XK_Return, spawn,          {.v = termcmd } },
 	{ CTRLKEY|ShiftMask,			XK_Return, spawn,		   {.v = firefox } },
@@ -115,6 +115,7 @@ static Key keys[] = {
 	{ 0,							XK_Print,  spawn,		   {.v = printScreen } },
 	{ MODKEY,						XK_e,	   spawn,		   {.v = fileExplorer } },
 	{ CTRLKEY,						XK_q,      killclient,     {0} },
+	{ MODKEY,						XK_q,      killclient,     {0} },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY|ShiftMask,             XK_b,      togglealttag,   {0} },
 	STACKKEYS(MODKEY,                          focus)
@@ -186,18 +187,18 @@ static Key keys[] = {
 /* button definitions */
 /* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
 static Button buttons[] = {
-	/* click                event mask      	button          function        argument */
-	{ ClkClientWin,         MODKEY|ControlMask, Button1,    	placemouse,     {0} },
-	{ ClkLtSymbol,          0,              	Button1,        setlayout,      {0} },
-	{ ClkLtSymbol,          0,              	Button3,        setlayout,      {.v = &layouts[2]} },
-	{ ClkWinTitle,          0,              	Button2,        zoom,           {0} },
-	{ ClkStatusText,        0,              	Button2,        spawn,          {.v = termcmd } },
-	{ ClkClientWin,         MODKEY,         	Button1,        movemouse,      {0} },
-	{ ClkClientWin,         MODKEY,         	Button2,        togglefloating, {0} },
-	{ ClkClientWin,         MODKEY,         	Button3,        resizemouse,    {0} },
-	{ ClkTagBar,            0,              	Button1,        view,           {0} },
-	{ ClkTagBar,            0,              	Button3,        toggleview,     {0} },
-	{ ClkTagBar,            MODKEY,         	Button1,        tag,            {0} },
-	{ ClkTagBar,            MODKEY,         	Button3,        toggletag,      {0} },
+	/* click                event mask      		button          function        argument */
+	{ ClkLtSymbol,          0,              		Button1,        setlayout,      {0} },
+	{ ClkLtSymbol,          0,              		Button3,        setlayout,      {.v = &layouts[2]} },
+	{ ClkWinTitle,          0,              		Button2,        zoom,           {0} },
+	{ ClkStatusText,        0,              		Button2,        spawn,          {.v = termcmd } },
+	{ ClkClientWin,         SUPERKEY|ControlMask, 	Button1,    	placemouse,     {0} },
+	{ ClkClientWin,         SUPERKEY,         		Button1,        movemouse,      {0} },
+	{ ClkClientWin,         SUPERKEY,         		Button2,        togglefloating, {0} },
+	{ ClkClientWin,         SUPERKEY,         		Button3,        resizemouse,    {0} },
+	{ ClkTagBar,            0,              		Button1,        view,           {0} },
+	{ ClkTagBar,            0,              		Button3,        toggleview,     {0} },
+	{ ClkTagBar,            MODKEY,         		Button1,        tag,            {0} },
+	{ ClkTagBar,            MODKEY,         		Button3,        toggletag,      {0} },
 };
 
