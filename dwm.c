@@ -1606,7 +1606,7 @@ nexttiled(Client *c)
 void
 placemouse(const Arg *arg)
 {
-	int x, y, ocx, ocy, nx = -9999, ny = -9999, freemove = 0;
+	int x, y, midx, midy, ocx, ocy, nx = -9999, ny = -9999, freemove = 0;
 	Client *c, *r = NULL, *at, *prevr;
 	Monitor *m;
 	XEvent ev;
@@ -1659,16 +1659,18 @@ placemouse(const Arg *arg)
 			if ((m = recttomon(ev.xmotion.x, ev.xmotion.y, 1, 1)) && m != selmon)
 				selmon = m;
 
-			r = recttoclient(ev.xmotion.x, ev.xmotion.y, 1, 1);
+			midx = nx + wa.width / 2;
+			midy = ny + wa.height / 2;
+			r = recttoclient(midx, midy, 1, 1);
 
 			if (!r || r == c)
 				break;
 
 			attachmode = 0; // below
-			if (((float)(r->y + r->h - ev.xmotion.y) / r->h) > ((float)(r->x + r->w - ev.xmotion.x) / r->w)) {
-				if (abs(r->y - ev.xmotion.y) < r->h / 2)
+			if (((float)(r->y + r->h - midy) / r->h) > ((float)(r->x + r->w - midx) / r->w)) {
+				if (abs(r->y - midy) < r->h / 2)
 					attachmode = 1; // above
-			} else if (abs(r->x - ev.xmotion.x) < r->w / 2)
+			} else if (abs(r->x - midx) < r->w / 2)
 					attachmode = 1; // above
 
 			if ((r && r != prevr) || (attachmode != prevattachmode)) {
