@@ -53,7 +53,8 @@ static const Rule rules[] = {
 	 */	
 	/* class      			instance    title       tags mask     	isfloating   	monitor */
 	{ "Gimp",     			NULL,       NULL,       0,           	1,           	-1	},
-	{ "Org.gnome.Nautilus", NULL, 		NULL, 		0, 				1, 				-1	}
+	{ "Org.gnome.Nautilus", NULL, 		NULL, 		0, 				1, 				-1	},
+	{ "SpeedCrunch", 		NULL, 		NULL, 		0, 				1, 				-1	},	
 };
 
 /* layout(s) */
