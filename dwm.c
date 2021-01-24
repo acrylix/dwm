@@ -1198,19 +1198,27 @@ focusdir(const Arg *arg)
 	int dirweight = 20;
 	int isfloating = s->isfloating;
 
+	if (isfloating)
+		return;
+
 	if (!s)
 		return;
 
 	next = s->next;
-	if (!next)
+	if (!next) {
 		next = s->mon->clients;
+	}
 	for (c = next; c != s; c = next) {
 
 		next = c->next;
-		if (!next)
+		if (!next) {
 			next = s->mon->clients;
+		}
 
-		if (!ISVISIBLE(c) || c->isfloating != isfloating) // || HIDDEN(c)
+		// if (!ISVISIBLE(c) || c->isfloating != isfloating) // || HIDDEN(c)
+		// 	continue;
+
+		if (c->isfloating) // just skip floating
 			continue;
 
 		switch (arg->i) {
