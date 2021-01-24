@@ -27,7 +27,7 @@ static const char *colors[][3]      = {
 
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
-static const char *tagsalt[] = { "一", "二", "三", "四", "五", "六", "七", "八", "九" };
+static const char *tagsalt[] = { "•", "•", "•", "•", "•", "•", "•", "•", "•" };
 
 /* grid of tags */
 #define DRAWCLASSICTAGS             1 << 1
@@ -116,14 +116,11 @@ static Key keys[] = {
 	{ 0,							XK_Print,  spawn,		   {.v = printScreen } },
 	{ MODKEY,						XK_e,	   spawn,		   {.v = fileExplorer } },
 	{ CTRLKEY,						XK_q,      killclient,     {0} },
-	{ MODKEY,						XK_q,      killclient,     {0} },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY|ShiftMask,             XK_b,      togglealttag,   {0} },
 	STACKKEYS(MODKEY,                          focus)
 	STACKKEYS(MODKEY|ShiftMask,                push)
 	{ SUPERKEY,                     XK_u,      focusurgent,    {0} },
-	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY,                       XK_Return, zoom,           {0} },
@@ -142,9 +139,16 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
 
-	{ MODKEY,                       XK_minus,  setgaps,        {.i = -5 } },
-	{ MODKEY,                       XK_equal,  setgaps,        {.i = +5 } },
-	{ MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i = 0  } },
+	{ MODKEY|ShiftMask,             XK_minus,  setgaps,        {.i = -5 } },
+	{ MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i = +5 } },
+
+	{ MODKEY,                       XK_equal,  incnmaster,     {.i = +1 } },
+	{ MODKEY,                       XK_minus,  incnmaster,     {.i = -1 } },
+
+	{ SUPERKEY,                     XK_j,   focusdir,       {.i = 0 } },
+	{ SUPERKEY,                     XK_l,  focusdir,       {.i = 1 } },
+	{ SUPERKEY,                     XK_i,     focusdir,       {.i = 2 } },
+	{ SUPERKEY,                     XK_k,   focusdir,       {.i = 3 } },
 
 	{ MODKEY,              			XK_bracketright,           	view_adjacent,  { .i = +1 } },
 	{ MODKEY,              			XK_bracketleft,           	view_adjacent,  { .i = -1 } },
