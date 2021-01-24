@@ -193,7 +193,12 @@ static Button buttons[] = {
 	{ ClkLtSymbol,          0,              		Button3,        setlayout,      {.v = &layouts[2]} },
 	{ ClkWinTitle,          0,              		Button2,        zoom,           {0} },
 	{ ClkStatusText,        0,              		Button2,        spawn,          {.v = termcmd } },
-	{ ClkClientWin,         SUPERKEY|ControlMask, 	Button1,    	placemouse,     {0} },
+	/* placemouse options, choose which feels more natural:
+	 *    0 - tiled position is relative to mouse cursor
+	 *    1 - tiled postiion is relative to window center
+	 *    2 - mouse pointer warps to window center
+	 */
+	{ ClkClientWin,         SUPERKEY|ControlMask, 	Button1,    placemouse,     	{.i = 2} },
 	{ ClkClientWin,         SUPERKEY,         		Button1,        movemouse,      {0} },
 	{ ClkClientWin,         SUPERKEY,         		Button2,        togglefloating, {0} },
 	{ ClkClientWin,         SUPERKEY,         		Button3,        resizemouse,    {0} },
