@@ -145,11 +145,6 @@ static Key keys[] = {
 	{ MODKEY,                       XK_equal,  incnmaster,     {.i = +1 } },
 	{ MODKEY,                       XK_minus,  incnmaster,     {.i = -1 } },
 
-	{ SUPERKEY,                     XK_j,   focusdir,       {.i = 0 } },
-	{ SUPERKEY,                     XK_l,  focusdir,       {.i = 1 } },
-	{ SUPERKEY,                     XK_i,     focusdir,       {.i = 2 } },
-	{ SUPERKEY,                     XK_k,   focusdir,       {.i = 3 } },
-
 	{ MODKEY,              			XK_bracketright,           	view_adjacent,  { .i = +1 } },
 	{ MODKEY,              			XK_bracketleft,           	view_adjacent,  { .i = -1 } },
 	{ CTRLKEY,              		XK_bracketright,           	view_adjacent,  { .i = +1 } },
