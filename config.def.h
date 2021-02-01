@@ -49,13 +49,15 @@ static const int tagrows = 2;
 
 static const Rule rules[] = {
 	/* xprop(1):
-	 *	WM_CLASS(STRING) = instance, class
-	 *	WM_NAME(STRING) = title
+	 *	WM_CLASS(STRING) 		= instance, class
+	 *	WM_NAME(STRING) 		= title
+	 *  WM_WINDOW_ROLE(STRING) 	= role
 	 */	
-	/* class      			instance    title       tags mask     	isfloating   	monitor */
-	{ "Gimp",     			NULL,       NULL,       0,           	1,           	-1	},
-	{ "Org.gnome.Nautilus", NULL, 		NULL, 		0, 				1, 				-1	},
-	{ "SpeedCrunch", 		NULL, 		NULL, 		0, 				1, 				-1	},	
+	/* class      			role		instance    title       tags mask     	isfloating   	monitor */
+	{ "Gimp",     			NULL,		NULL,       NULL,       0,           	1,           	-1	},
+	{ "Org.gnome.Nautilus", NULL,		NULL, 		NULL, 		0, 				1, 				-1	},
+	{ "SpeedCrunch", 		NULL,		NULL, 		NULL, 		0, 				1, 				-1	},	
+	{ "Google-chrome",		"pop-up",	NULL,		NULL,		0,				1,				-1	},
 };
 
 /* layout(s) */
