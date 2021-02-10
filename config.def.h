@@ -10,9 +10,12 @@ static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display 
 static const int showsystray        = 1;     	/* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const int user_bh            = 40;        /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
+static const int user_bh            = 40;       /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
+static		 int attachdirection 	= 0;    	/* 0 default, 1 above, 2 aside, 3 below, 4 bottom, 5 top */
+
 static const char *fonts[]          = { "Terminess Powerline:size=13:style=Bold:antialias=true" };
 static const char dmenufont[]       = "Terminess Powerline:size=11:style=Bold:antialias=true";
+
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
@@ -149,12 +152,19 @@ static Key keys[] = {
 	{ MODKEY,                       XK_equal,  incnmaster,     {.i = +1 } },
 	{ MODKEY,                       XK_minus,  incnmaster,     {.i = -1 } },
 
+	{ MODKEY|SUPERKEY,             		XK_1,  	changeAttachDirection,  { .i = 1 } },
+	{ MODKEY|SUPERKEY,             		XK_2,  	changeAttachDirection,  { .i = 2 } },
+	{ MODKEY|SUPERKEY,             		XK_3,  	changeAttachDirection,  { .i = 3 } },
+	{ MODKEY|SUPERKEY,             		XK_4,  	changeAttachDirection,  { .i = 4 } },
+	{ MODKEY|SUPERKEY,             		XK_5,  	changeAttachDirection,  { .i = 5 } },
+	{ MODKEY|SUPERKEY,             		XK_0,  	changeAttachDirection,  { .i = 0 } },
+ 
 	{ MODKEY,              			XK_bracketright,           	view_adjacent,  { .i = +1 } },
 	{ MODKEY,              			XK_bracketleft,           	view_adjacent,  { .i = -1 } },
 	{ CTRLKEY,              		XK_bracketright,           	view_adjacent,  { .i = +1 } },
 	{ CTRLKEY,              		XK_bracketleft,           	view_adjacent,  { .i = -1 } },
-	{ MODKEY|ShiftMask,				XK_bracketleft, 			focusmon,       {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_bracketright, 			focusmon,       {.i = +1 } },
+	{ MODKEY|ShiftMask,				XK_bracketleft, 			focusmon,       { .i = -1 } },
+	{ MODKEY|ShiftMask,             XK_bracketright, 			focusmon,       { .i = +1 } },
 
 	{ MODKEY|CTRLKEY,               XK_q,      moveplace,      {.ui = WIN_NW }},
 	{ MODKEY|CTRLKEY,               XK_w,      moveplace,      {.ui = WIN_N  }},
