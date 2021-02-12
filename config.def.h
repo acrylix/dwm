@@ -10,7 +10,7 @@ static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display 
 static const int showsystray        = 1;     	/* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char slopstyle[]       = "-t 0 -c 0.92,0.85,0.69,0.3"; /* do NOT define -f (format) here */
+static const char slopstyle[]       = "-l -b 3 -c 0.3,0.6,0.2,0.4"; /* do NOT define -f (format) here */
 static const int user_bh            = 40;       /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
 static		 int attachdirection 	= 0;    	/* 0 default, 1 above, 2 aside, 3 below, 4 bottom, 5 top */
 
@@ -213,7 +213,7 @@ static Button buttons[] = {
 	 *    1 - tiled postiion is relative to window center
 	 *    2 - mouse pointer warps to window center
 	 */
-	{ ClkClientWin,         SUPERKEY|ControlMask, 	Button1,    placemouse,     	{.i = 2} },
+	{ ClkClientWin,         SUPERKEY|ControlMask, 	Button1,    	placemouse,     {.i = 2} },
 	{ ClkClientWin,         SUPERKEY,         		Button1,        movemouse,      {0} },
 	{ ClkClientWin,         SUPERKEY,         		Button2,        togglefloating, {0} },
 	{ ClkClientWin,         SUPERKEY,         		Button3,        resizemouse,    {0} },
