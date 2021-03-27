@@ -144,9 +144,6 @@ static Key keys[] = {
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 
-	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-
 	{ MODKEY|ShiftMask,             XK_minus,  setgaps,        {.i = -5 } },
 	{ MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i = +5 } },
 
@@ -168,6 +165,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_bracketright, 			focusmon,       { .i = +1 } },
 
 	{ MODKEY,             			XK_grave, 					focusmon,       { .i = +1 } },
+	{ MODKEY|ShiftMask,             XK_grave, 					tagmon,         {.i = +1 } },
 
 	{ MODKEY|CTRLKEY,               XK_q,      moveplace,      {.ui = WIN_NW }},
 	{ MODKEY|CTRLKEY,               XK_w,      moveplace,      {.ui = WIN_N  }},
